@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padiing: 0;
+}
+.App {
+  width: 90%;
+  margin: auto;
+}
+body {
+  font-family: "Muli", sans-serif;
+  line-height: 1.4;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
