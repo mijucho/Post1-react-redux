@@ -5,21 +5,44 @@ class PostForm extends Component {
     super(props);
     this.state = {
       title: "",
-      input: ""
+      body: ""
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
+    console.log("name of field that changed", e.target.name);
+    console.log("value of field that changed", e.target.value);
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const post = {
+      title: this.state.title,
+      input: this.state.body
+    };
+
+    console.log(post);
+
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(post)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
   }
 
   render() {
     return (
       <div>
         <h1>Add Post</h1>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <div>
             <label>Title:</label> <br />
             <input
@@ -33,7 +56,7 @@ class PostForm extends Component {
           <div>
             <label>Input:</label> <br />
             <textarea
-              name="input"
+              name="body"
               onChange={this.onChange}
               value={this.state.input}
             />
