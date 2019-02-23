@@ -6,8 +6,6 @@ import store from "./store";
 import Posts from "./components/Posts";
 import PostForm from "./components/Postform";
 
-const store = createStore(() => [], {}, applyMiddleware());
-
 class App extends Component {
   render() {
     return (
