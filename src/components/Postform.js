@@ -23,6 +23,7 @@ class PostForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    console.log("Submit");
     const post = {
       title: this.state.title,
       input: this.state.body
